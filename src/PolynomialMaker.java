@@ -9,13 +9,6 @@ import java.util.Scanner;
 public class PolynomialMaker {
     private static Polynomial myPoly;
 
-
-    public static void makePolynomial() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Please enter the degree of the polynomial and " +
-                "the coefficient (highest degree to lowest)");
-    }
-
     public static void main(String[] args) {
         int count = 0;
         myPoly = new Polynomial(Integer.parseInt(args[0]));
@@ -28,11 +21,6 @@ public class PolynomialMaker {
             myPoly.setCoefficients(count,Integer.parseInt(args[i]));
             count--;
         }
-
-        askUser();
-        //System.out.println(myPoly.evaluate(0));
-        //System.out.println(myPoly.evaluate(1));
-        //System.out.println(myPoly.evaluate(0.5));
     }
 
     public static void askUser() {
