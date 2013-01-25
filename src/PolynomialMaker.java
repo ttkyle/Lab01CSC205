@@ -21,6 +21,8 @@ public class PolynomialMaker {
             myPoly.setCoefficients(count,Integer.parseInt(args[i]));
             count--;
         }
+
+        askUserTwo();
     }
 
     public static void askUser() {
@@ -36,6 +38,27 @@ public class PolynomialMaker {
         }
         else {
             System.exit(0);
+        }
+    }
+
+    public static void askUserTwo() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter a value>");
+        double value = input.nextDouble();
+        System.out.println("The value is " + myPoly.evaluate(value));
+        boolean cont = true;
+        while(cont) {
+            System.out.println("Continue?>");
+            String valueYesNo = input.next();
+            if(valueYesNo.equals("Yes") || valueYesNo.equals("yes") || valueYesNo.equals("y")) {
+                input = new Scanner(System.in);
+                System.out.println("Enter a value>");
+                value = input.nextDouble();
+                System.out.println("The value is " + myPoly.evaluate(value));
+            }
+            else {
+                cont = false;
+            }
         }
     }
 }
