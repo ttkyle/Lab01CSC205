@@ -22,35 +22,21 @@ public class PolynomialMaker {
             count--;
         }
 
-        askUserTwo();
+        askUser();
     }
 
     public static void askUser() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter a value>");
-        int value = input.nextInt();
-        System.out.println("The value is " + myPoly.evaluate(value));
 
-        System.out.println("Continue?>");
-        String valueYesNo = input.next();
-        if(valueYesNo.equals("Yes") || valueYesNo.equals("yes") || valueYesNo.equals("y")) {
-            askUser();
-        }
-        else {
-            System.exit(0);
-        }
-    }
-
-    public static void askUserTwo() {
-        Scanner input = new Scanner(System.in);
         System.out.println("Enter a value>");
         double value = input.nextDouble();
         System.out.println("The value is " + myPoly.evaluate(value));
         boolean cont = true;
+
         while(cont) {
             System.out.println("Continue?>");
             String valueYesNo = input.next();
-            if(valueYesNo.equals("Yes") || valueYesNo.equals("yes") || valueYesNo.equals("y")) {
+            if(valueYesNo.equalsIgnoreCase("Yes")  || valueYesNo.equals("y")) {
                 input = new Scanner(System.in);
                 System.out.println("Enter a value>");
                 value = input.nextDouble();
