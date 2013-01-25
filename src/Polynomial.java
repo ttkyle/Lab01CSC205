@@ -8,20 +8,18 @@ public class Polynomial {
 
     //The attributes of the class
     private int degree;
-    private int[] degrees = new int[100];
-    private int[] coefficients = new int[100];
-    private int count = 0;
+    private int[] coefficients;
 
     //one argument constructor that sets the degree of the polynomial
     public Polynomial(int degree) {
         this.degree = degree;
+        coefficients = new int[this.degree+1];
+
     }
 
     //sets the coefficient and degree using a counter
     public void setCoefficients(int degree, int coefficient) {
-        coefficients[count] = coefficient;
-        degrees[count] = degree;
-        count++;
+        coefficients[degree] = coefficient;
     }
 
     //does all the calculations on the polynomial
@@ -31,18 +29,7 @@ public class Polynomial {
 
         //loops through the entire array
         for(int i = 0; i < coefficients.length; i++) {
-
-            //this if statement only works if the degree is > 0 (ex nX^b  b must be > 0)
-            if(degrees[i] > 0) {
-                double total = coefficients[i] * Math.pow(xTerm, degrees[i]);
-                runningTotal += total;
-            }
-
-            //this if statement handles cases where it would be xTerm^0 which would be coefficients[i] * 1
-            if(degrees[i] == 0) {
-                double total = coefficients[i];
-                runningTotal += total;
-            }
+            runningTotal += coefficients[i]*Math.pow(xTerm, i);
         }
         return runningTotal;
     }
