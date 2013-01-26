@@ -13,55 +13,24 @@ public class ShoppingBagRepeat {
 
     //Either method can be run I just commented one out
     public static void main(String[] args) {
-        askUserRecursion();
-        //askUserNonRecursion();
+        askUser();
     }
 
-    //Uses recursion to get the tally
-    public static void askUserRecursion() {
+    public static void askUser() {
 
-        //make a scanner object to capture input
-        Scanner userInput;
-        userInput = new Scanner(System.in);
+
+        boolean cont = true;
 
         //use these variables to hold the userInput from Scanner
         int numberOfItems;
         double costOfItems;
 
-        //ask the user to put in an amount of items or finish and tally total
-        System.out.println("Enter item count (or 0 to stop and tally total)");
-        numberOfItems = userInput.nextInt();
+        //Scanner object to capture userInput
+        Scanner userInput;
+        userInput = new Scanner(System.in);
 
-        //if the user inputs anything other than 0 then the program asks for the cost and uses the place()
-        if (numberOfItems != 0) {
-            System.out.println("Please enter the cost of the item entered into the bag");
-            costOfItems = userInput.nextDouble();
-            myBag.place(numberOfItems, costOfItems);
-        }
-        //if the user does input 0 then toString() is called and the program exits
-        else {
-            System.out.println(myBag.toString());
-            System.exit(0);
-        }
-        //method calls itself until it hits the previous else statement
-        askUserRecursion();
-    }
-
-    public static void askUserNonRecursion() {
-
-        //the ShoppingBag object for askUserNonRecursion
-        ShoppingBag myBag = new ShoppingBag(6);
-
-        //loop through a lot, if customer has 100001 items that sucks for us :(
-        for(int i = 0; i < 100000; i++) {
-
-            //Scanner object to capture userInput
-            Scanner userInput;
-            userInput = new Scanner(System.in);
-
-            //use these variables to hold the userInput from Scanner
-            int numberOfItems;
-            double costOfItems;
+        //loop until the user gets us to stop
+        while(cont) {
 
             //ask the user to input number of items in purchase
             System.out.println("Enter item count (or 0 to stop and tally total)");
@@ -76,7 +45,7 @@ public class ShoppingBagRepeat {
             //if 0 is input for numberOfItems then the program prints the totals via toString and exits
             else {
                 System.out.println(myBag.toString());
-                System.exit(0);
+                cont = false;
             }
         }
     }
