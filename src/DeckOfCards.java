@@ -28,8 +28,6 @@ public class DeckOfCards implements  DeckOfCardsInterface {
     public void shuffle() {
 
         Random r = new Random();
-        //set the card count to 0 before shuffling
-        count = 0;
 
         //randomize the card
         for(int i = 0; i < cardArray.length; i++) {
@@ -40,20 +38,31 @@ public class DeckOfCards implements  DeckOfCardsInterface {
             cardArray[randomNumber] = tempCard;
         }
 
+        //set the card count to 0 after shuffling
+        count = 0;
+
     }
 
     //deal a card
     public Card dealCard() {
-        if (count < cardArray.length) {
+
+        if(count == 0) {
+            shuffle();
             return cardArray[count++];
         }
-        else {
-            return null;
-        }
+        return cardArray[count++];
     }
 
     //get the current card count
     public int cardsLeft() {
         return 52 - count;
+    }
+
+    public String toString() {
+        String card = "";
+        for(int i = 0; i < cardArray.length; i++) {
+            card = card + " " +  String.valueOf(dealCard() + "\n") ;
+        }
+      return card;
     }
 }
