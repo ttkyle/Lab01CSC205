@@ -23,6 +23,7 @@ public class DeckOfCards implements  DeckOfCardsInterface {
                 count++;
             }
         }
+        count = 0;
     }
 
     public void shuffle() {
